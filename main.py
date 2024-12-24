@@ -25,6 +25,7 @@ class CommandTorch(QMainWindow):
         self.button_3.disable_button()
         self.button_4.disable_button()
         self.button_5.disable_button()
+        self.ui.btn_reset.setEnabled(False)
 
         # [GUI] torch
         self.ui.Torch_one.clicked.connect(lambda: self.click_torch_one())
@@ -76,9 +77,8 @@ class CommandTorch(QMainWindow):
         self.button_3.reset()
         self.button_4.reset()
         self.button_5.reset()
-        
-        # TODO: reset winner timer
 
+        # TODO: reset winner timer
 
     def click_start(self):
         if len(self.ui.name.text()) != 0:
@@ -87,7 +87,9 @@ class CommandTorch(QMainWindow):
             self.button_3.enable_button()
             self.button_4.enable_button()
             self.button_5.enable_button()
-            
+            self.click_reset()
+            self.ui.btn_reset.setEnabled(True)
+
             # status timer
             self.status_timer.start(1000)
 
@@ -104,9 +106,11 @@ class CommandTorch(QMainWindow):
         if all(self.status_torch):
             print("YOU WIN!")
             self.status_timer.stop()
+            self.ui.btn_reset.setEnabled(False)
             # TODO: aggiornare il file e la lista dei vincitori
             # TODO: reset winner timer
             pass
+
 
 def main():
     app = QApplication(sys.argv)
