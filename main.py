@@ -41,7 +41,6 @@ class CommandTorch(QMainWindow):
         self.status_torch = [False, False, False, False, False]
         self.status_timer = QTimer()
         self.status_timer.timeout.connect(self.check_status)
-        self.status_timer.start(1000)
 
         # [GUI] Timer 
         # TODO needed timer
@@ -88,6 +87,12 @@ class CommandTorch(QMainWindow):
             self.button_3.enable_button()
             self.button_4.enable_button()
             self.button_5.enable_button()
+            
+            # status timer
+            self.status_timer.start(1000)
+
+            # winner timer
+            # TODO
 
     def check_status(self):
         self.status_torch[0] = self.button_1.is_active
@@ -98,6 +103,7 @@ class CommandTorch(QMainWindow):
 
         if all(self.status_torch):
             print("YOU WIN!")
+            self.status_timer.stop()
             # TODO: aggiornare il file e la lista dei vincitori
             # TODO: reset winner timer
             pass
