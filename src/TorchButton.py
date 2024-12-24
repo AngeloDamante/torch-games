@@ -10,6 +10,12 @@ class TorchButton:
         self.button = button
         self.reset()
 
+    def enable_button(self):
+        self.button.setEnabled(True)
+
+    def disable_button(self):
+        self.button.setEnabled(False)
+
     def reset(self):
         self.button.setStyleSheet("background-color:white;")
         self.is_active = False
