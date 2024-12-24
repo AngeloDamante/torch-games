@@ -1,6 +1,7 @@
 import sys
 from gui.torch_game import Ui_MainWindow
 from PySide6.QtWidgets import QApplication, QMainWindow
+from PyQt5.QtGui import QPalette, QColor
 
 
 class Comand_torch(QMainWindow):
@@ -10,12 +11,14 @@ class Comand_torch(QMainWindow):
 		self.ui.setupUi(self)
 
 		# [GUI] torch
-		self.ui.Torch_one.clicked.connect()
-		self.ui.Torch_two.clicked.connect()
-		self.ui.Torch_three.clicked.connect()
-		self.ui.Torch_four.clicked.connect()
-		self.ui.Torch_five.clicked.connect()
+		self.ui.Torch_one.clicked.connect(self.click_torch())
+		self.ui.Torch_two.clicked.connect(self.click_torch())
+		self.ui.Torch_three.clicked.connect(self.click_torch())
+		self.ui.Torch_four.clicked.connect(self.click_torch())
+		self.ui.Torch_five.clicked.connect(self.click_torch())
 
+	def click_torch(self):
+		pass
 
 def main():
 	app = QApplication(sys.argv)
