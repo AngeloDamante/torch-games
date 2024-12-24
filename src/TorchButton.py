@@ -7,8 +7,12 @@ Date: December 2024
 
 class TorchButton:
     def __init__(self, button):
-        self.is_active = False
         self.button = button
+        self.reset()
+
+    def reset(self):
+        self.button.setStyleSheet("background-color:white;")
+        self.is_active = False
 
     def burn(self) -> bool:
         if self.is_active: return False
