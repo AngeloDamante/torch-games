@@ -3,19 +3,25 @@ from gui.torch_game import Ui_MainWindow
 from PySide6.QtWidgets import QApplication, QMainWindow
 from PyQt5.QtGui import QPalette, QColor
 
+from src.TorchButton import TorchButton
 
-class Comand_torch(QMainWindow):
+
+class Command_torch(QMainWindow):
 	def __init__(self):
-		super(Comand_torch, self).__init__()
+		super(Command_torch, self).__init__()
 		self.ui = Ui_MainWindow()
 		self.ui.setupUi(self)
 
+		self.button_1 = TorchButton(self.ui.Torch_one)
+
 		# [GUI] torch
-		self.ui.Torch_one.clicked.connect(self.click_torch(1))
+		self.ui.Torch_one.clicked.connect(lambda: self.button_1.trigger())
 		self.ui.Torch_two.clicked.connect(self.click_torch(2))
 		self.ui.Torch_three.clicked.connect(self.click_torch(3))
 		self.ui.Torch_four.clicked.connect(self.click_torch(4))
 		self.ui.Torch_five.clicked.connect(self.click_torch(5))
+
+		
 
 	def click_torch(self, torch):
 		match torch:
@@ -33,7 +39,7 @@ class Comand_torch(QMainWindow):
 
 def main():
 	app = QApplication(sys.argv)
-	window = Comand_torch()
+	window = Command_torch()
 	window.show()
 	sys.exit(app.exec())
 
