@@ -12,6 +12,10 @@ class TorchButton:
         self.is_active = False
         self.button = button
 
+    def burn(self) -> None:
+        self.is_active = True
+        self.button.setStyleSheet("background-color:red;")
+
     def trigger(self) -> bool:
         self.is_active = not self.is_active
         if self.is_active:
