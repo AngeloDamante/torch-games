@@ -3,6 +3,7 @@ from gui.torch_game import Ui_MainWindow
 from PySide6.QtWidgets import QApplication, QMainWindow
 from PySide6.QtCore import QTimer
 from src.TorchButton import TorchButton
+from datetime import datetime, timedelta
 
 
 class CommandTorch(QMainWindow):
@@ -44,7 +45,9 @@ class CommandTorch(QMainWindow):
         self.status_timer.timeout.connect(self.check_status)
 
         # [GUI] Timer 
-        # TODO needed timer
+        self.winner_timer = QTimer()
+        self.start_time = datetime.now()
+        self.winner_timer.timeout.connect(lambda: self.ui.timer_visible.setText(str(datetime.now() - self.start_time)))
 
     def click_torch_one(self):
         if self.button_1.burn():
@@ -78,7 +81,7 @@ class CommandTorch(QMainWindow):
         self.button_4.reset()
         self.button_5.reset()
 
-        # TODO: reset winner timer
+        self.start_time = datetime.now()
 
     def click_start(self):
         if len(self.ui.name.text()) != 0:
@@ -94,7 +97,7 @@ class CommandTorch(QMainWindow):
             self.status_timer.start(1000)
 
             # winner timer
-            # TODO
+            self.winner_timer.start(1)
 
     def check_status(self):
         self.status_torch[0] = self.button_1.is_active
@@ -108,7 +111,7 @@ class CommandTorch(QMainWindow):
             self.status_timer.stop()
             self.ui.btn_reset.setEnabled(False)
             # TODO: aggiornare il file e la lista dei vincitori
-            # TODO: reset winner timer
+            self.winner_timer.stop()
             pass
 
 

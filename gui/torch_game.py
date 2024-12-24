@@ -28,7 +28,7 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName(u"centralwidget")
         self.time = QLabel(self.centralwidget)
         self.time.setObjectName(u"time")
-        self.time.setGeometry(QRect(10, 20, 161, 37))
+        self.time.setGeometry(QRect(10, 20, 31, 37))
         self.Start = QPushButton(self.centralwidget)
         self.Start.setObjectName(u"Start")
         self.Start.setGeometry(QRect(720, 20, 75, 23))
@@ -70,6 +70,9 @@ class Ui_MainWindow(object):
         self.name = QLineEdit(self.centralwidget)
         self.name.setObjectName(u"name")
         self.name.setGeometry(QRect(50, 50, 121, 20))
+        self.timer_visible = QLabel(self.centralwidget)
+        self.timer_visible.setObjectName(u"timer_visible")
+        self.timer_visible.setGeometry(QRect(40, 30, 131, 16))
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
@@ -99,5 +102,6 @@ class Ui_MainWindow(object):
         self.label.setText(QCoreApplication.translate("MainWindow", u"Name:", None))
         self.ris_name.setText(QCoreApplication.translate("MainWindow", u"Name", None))
         self.ris_time.setText(QCoreApplication.translate("MainWindow", u"Time", None))
+        self.timer_visible.setText("")
     # retranslateUi
 
