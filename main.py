@@ -6,9 +6,9 @@ from PyQt5.QtGui import QPalette, QColor
 from src.TorchButton import TorchButton
 
 
-class Command_torch(QMainWindow):
+class CommandTorch(QMainWindow):
 	def __init__(self):
-		super(Command_torch, self).__init__()
+		super(CommandTorch, self).__init__()
 		self.ui = Ui_MainWindow()
 		self.ui.setupUi(self)
 
@@ -39,7 +39,7 @@ class Command_torch(QMainWindow):
 
 def main():
 	app = QApplication(sys.argv)
-	window = Command_torch()
+	window = CommandTorch()
 	window.show()
 	sys.exit(app.exec())
 
