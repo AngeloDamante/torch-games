@@ -3,6 +3,7 @@ from gui.torch_game import Ui_MainWindow
 from PySide6.QtWidgets import QApplication, QMainWindow
 from PySide6.QtCore import QTimer
 from src.TorchButton import TorchButton
+from src.WinnerHandler import WinnerHandler
 from datetime import datetime, timedelta
 
 
@@ -49,6 +50,9 @@ class CommandTorch(QMainWindow):
         self.start_time = datetime.now()
         self.winner_timer.timeout.connect(lambda: self.ui.timer_visible.setText(str(datetime.now() - self.start_time)))
 
+        # TODO: Load file CSV with columns
+        # TODO: Read File into ListViewWidget
+
     def click_torch_one(self):
         if self.button_1.burn():
             self.button_3.trigger()
@@ -81,6 +85,7 @@ class CommandTorch(QMainWindow):
         self.button_4.reset()
         self.button_5.reset()
 
+        # reset winner stopwatch
         self.start_time = datetime.now()
 
     def click_start(self):
@@ -107,11 +112,12 @@ class CommandTorch(QMainWindow):
         self.status_torch[4] = self.button_5.is_active
 
         if all(self.status_torch):
-            print("YOU WIN!")
+            self.winner_timer.stop()
             self.status_timer.stop()
             self.ui.btn_reset.setEnabled(False)
-            # TODO: aggiornare il file e la lista dei vincitori
-            self.winner_timer.stop()
+
+            print("YOU WIN!")
+            # TODO: aggiornare il file CSV (colonne) e la lista dei vincitori
             pass
 
 

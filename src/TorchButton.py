@@ -1,5 +1,5 @@
 """
-A simple button ti simulate a torch behaviour. 
+A simple button to simulate a torch behaviour. 
 
 Author: Angelone
 Date: December 2024
