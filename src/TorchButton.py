@@ -1,5 +1,3 @@
-from PySide6.QtWidgets import QPushButton
-
 """
 A simple button ti simulate a torch behaviour. 
 
@@ -18,7 +16,7 @@ class TorchButton:
         self.button.setStyleSheet("background-color:red;")
         return True
 
-    def trigger(self) -> bool:
+    def trigger(self) -> None:
         self.is_active = not self.is_active
         if self.is_active:
             self.button.setStyleSheet("background-color:red;")
