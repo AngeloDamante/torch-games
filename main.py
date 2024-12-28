@@ -56,7 +56,7 @@ class CommandTorch(QMainWindow):
         self.o_winner_handler = WinnerHandler("data/player_records.csv")
         self.view_model = QStandardItemModel()
         self.ui.list_record.setModel(self.view_model)
-        self.view_model.setHorizontalHeaderLabels(self.o_winner_handler.get_winners()[0].keys())
+        self.view_model.setHorizontalHeaderLabels(["Name", "Score"])
         self.update_view()
 
     def click_torch_one(self):
@@ -143,3 +143,5 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+    # TODO BUG DEL NOME
