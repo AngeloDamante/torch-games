@@ -50,7 +50,7 @@ class CommandTorch(QMainWindow):
         self.start_time = datetime.now()
         self.winner_timer.timeout.connect(lambda: self.ui.timer_visible.setText(str(datetime.now() - self.start_time)))
 
-        # TODO: Load file CSV with columns
+        self.o_winner_handler = WinnerHandler("data/player_records.csv")
         # TODO: Read File into ListViewWidget
 
     def click_torch_one(self):
@@ -117,8 +117,7 @@ class CommandTorch(QMainWindow):
             self.ui.btn_reset.setEnabled(False)
 
             print("YOU WIN!")
-            # TODO: aggiornare il file CSV (colonne) e la lista dei vincitori
-            pass
+            self.o_winner_handler.add_winner(self.ui.name.text(), self.ui.timer_visible.text())
 
 
 def main():
