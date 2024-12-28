@@ -127,6 +127,7 @@ class CommandTorch(QMainWindow):
             self.update_view()
 
     def update_view(self):
+        self.view_model.clear()
         winners = self.o_winner_handler.get_winners()
         items = []
         for record in winners:
@@ -143,5 +144,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-    # TODO BUG DEL NOME
