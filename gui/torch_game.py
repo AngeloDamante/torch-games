@@ -61,12 +61,6 @@ class Ui_MainWindow(object):
         self.label = QLabel(self.centralwidget)
         self.label.setObjectName(u"label")
         self.label.setGeometry(QRect(10, 50, 41, 16))
-        self.ris_name = QLabel(self.centralwidget)
-        self.ris_name.setObjectName(u"ris_name")
-        self.ris_name.setGeometry(QRect(130, 310, 47, 13))
-        self.ris_time = QLabel(self.centralwidget)
-        self.ris_time.setObjectName(u"ris_time")
-        self.ris_time.setGeometry(QRect(660, 310, 47, 13))
         self.name = QLineEdit(self.centralwidget)
         self.name.setObjectName(u"name")
         self.name.setGeometry(QRect(50, 50, 121, 20))
@@ -100,8 +94,6 @@ class Ui_MainWindow(object):
         self.Torch_four.setText("")
         self.btn_reset.setText(QCoreApplication.translate("MainWindow", u"Reset", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"Name:", None))
-        self.ris_name.setText(QCoreApplication.translate("MainWindow", u"Name", None))
-        self.ris_time.setText(QCoreApplication.translate("MainWindow", u"Time", None))
         self.timer_visible.setText("")
     # retranslateUi
 
