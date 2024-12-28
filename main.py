@@ -2,6 +2,7 @@ import sys
 from gui.torch_game import Ui_MainWindow
 from PySide6.QtWidgets import QApplication, QMainWindow
 from PySide6.QtCore import QTimer
+from PySide6.QtGui import QStandardItem, QStandardItemModel
 from src.TorchButton import TorchButton
 from src.WinnerHandler import WinnerHandler
 from datetime import datetime, timedelta
@@ -50,8 +51,13 @@ class CommandTorch(QMainWindow):
         self.start_time = datetime.now()
         self.winner_timer.timeout.connect(lambda: self.ui.timer_visible.setText(str(datetime.now() - self.start_time)))
 
-        self.o_winner_handler = WinnerHandler("data/player_records.csv")
+        # Winners
         # TODO: Read File into ListViewWidget
+        self.o_winner_handler = WinnerHandler("data/player_records.csv")
+        self.view_model = QStandardItemModel()
+        self.ui.list_record.setModel(self.view_model)
+        self.view_model.setHorizontalHeaderLabels(self.o_winner_handler.get_winners()[0].keys())
+        self.update_view()
 
     def click_torch_one(self):
         if self.button_1.burn():
@@ -118,6 +124,14 @@ class CommandTorch(QMainWindow):
 
             print("YOU WIN!")
             self.o_winner_handler.add_winner(self.ui.name.text(), self.ui.timer_visible.text())
+            self.update_view()
+
+    def update_view(self):
+        winners = self.o_winner_handler.get_winners()
+        items = []
+        for record in winners:
+            items = [QStandardItem(str(record.get(header, ""))) for header in winners[0].keys()]
+            self.view_model.appendRow(items)
 
 
 def main():
