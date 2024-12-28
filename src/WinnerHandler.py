@@ -38,7 +38,6 @@ class WinnerHandler:
         self.winners.append({self.headers[0]: name, self.headers[1]: score})
 
         # Update File
-        with open(self.file_name, mode="w") as f:
+        with open(self.file_name, mode="a") as f:
             writer = csv.DictWriter(f, fieldnames=self.headers, delimiter=";")
-            for row in self.winners:
-                writer.writerow(row)
+            writer.writerow({self.headers[0]: name, self.headers[1]: score})
