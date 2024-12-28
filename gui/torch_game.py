@@ -15,15 +15,17 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QFrame, QLabel, QLineEdit,
-    QListView, QMainWindow, QMenuBar, QPushButton,
-    QSizePolicy, QStatusBar, QWidget)
+from PySide6.QtWidgets import (QApplication, QFrame, QHeaderView, QLabel,
+    QLineEdit, QMainWindow, QMenuBar, QPushButton,
+    QSizePolicy, QStatusBar, QTableView, QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.resize(800, 600)
+        MainWindow.setMinimumSize(QSize(800, 600))
+        MainWindow.setMaximumSize(QSize(800, 600))
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.time = QLabel(self.centralwidget)
@@ -47,9 +49,6 @@ class Ui_MainWindow(object):
         self.Torch_four = QPushButton(self.centralwidget)
         self.Torch_four.setObjectName(u"Torch_four")
         self.Torch_four.setGeometry(QRect(360, 200, 51, 41))
-        self.list_record = QListView(self.centralwidget)
-        self.list_record.setObjectName(u"list_record")
-        self.list_record.setGeometry(QRect(0, 310, 791, 251))
         self.line = QFrame(self.centralwidget)
         self.line.setObjectName(u"line")
         self.line.setGeometry(QRect(0, 300, 801, 16))
@@ -67,6 +66,9 @@ class Ui_MainWindow(object):
         self.timer_visible = QLabel(self.centralwidget)
         self.timer_visible.setObjectName(u"timer_visible")
         self.timer_visible.setGeometry(QRect(40, 30, 131, 16))
+        self.list_record = QTableView(self.centralwidget)
+        self.list_record.setObjectName(u"list_record")
+        self.list_record.setGeometry(QRect(0, 310, 801, 261))
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
